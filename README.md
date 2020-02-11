@@ -1,6 +1,9 @@
 ### Netlify Link :https://masaimeeting.netlify.com
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+### For this to work , you need to run the server.
+https://github.com/masai-school/api-mocker
+clone repo and run python server.py
 ## Available Scripts
 
 In the project directory, you can run:
