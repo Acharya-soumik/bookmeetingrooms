@@ -9,7 +9,7 @@ import axios from "axios";
 
 const loginReguest = () => {
   return {
-    type: LOGIN_REQUEST
+    type: LOGIN_REQUESTs
   };
 };
 const loginSuccess = token => {
@@ -35,7 +35,8 @@ const registerRequest = () => {
 
 const registerSuccess = data => {
   return {
-    type: REGISTER_SUCCESS,
+    type: REGISTER_SUCCESS,LOGIN_REQUEST
+  };
     payload: data
   };
 };

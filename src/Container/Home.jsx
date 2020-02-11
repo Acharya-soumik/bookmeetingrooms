@@ -6,7 +6,7 @@ import Table from "./Table";
 function Home({ auth, rooms }) {
   const [pageNo, setPageNo] = useState(1);
   const [noOfData, setNoOfData] = useState(10);
-  const indexPrevData = (pageNo - 1) * noOfData;
+  const indexPrevData = Math.floor((pageNo - 1) * noOfData);
   const indexCurrData = pageNo * noOfData;
   const dataToShow = rooms.slice(indexPrevData, indexCurrData);
   const changePageData = num => setNoOfData(num);
