@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
+import swal from "sweetalert";
 
 function BookingPage(props) {
   const [loading, setLoading] = useState(false);
@@ -12,7 +13,7 @@ function BookingPage(props) {
     setLoading(true);
     const timer = setTimeout(() => {
       setLoading(false);
-      alert("Booking Confirmed !");
+      swal("Booking Confirmed!", "Your booking has been made!", "success");
       props.history.push("/");
     }, 3000);
     return () => clearTimeout(timer);

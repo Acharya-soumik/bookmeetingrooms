@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { Redirect, Link } from "react-router-dom";
 import Table from "./Table";
 import { searchMeetingRooms } from "../Redux/meetingAction";
+import swal from "sweetalert";
 
 function Home({ auth, rooms, searchRoom, searchResult }) {
   const [pageNo, setPageNo] = useState(1);

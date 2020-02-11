@@ -6,6 +6,7 @@ import {
   REGISTER_SUCCESS
 } from "./actionType";
 import axios from "axios";
+import swal from "sweetalert";
 
 const loginReguest = () => {
   return {
@@ -13,14 +14,14 @@ const loginReguest = () => {
   };
 };
 const loginSuccess = token => {
-  alert("login sucess");
+  swal("Login Success", "You have successfully Logged In", "success");
   return {
     type: LOGIN_SUCCESS,
     payload: token
   };
 };
 const loginFailure = message => {
-  alert("invalid data");
+  swal("Login Failed", "You Entered Invalid Data", "warning");
   return {
     type: LOGIN_FAILURE,
     payload: message
