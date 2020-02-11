@@ -9,7 +9,10 @@ function Home({ auth, rooms }) {
   const indexPrevData = Math.floor((pageNo - 1) * noOfData);
   const indexCurrData = pageNo * noOfData;
   const dataToShow = rooms.slice(indexPrevData, indexCurrData);
-  const changePageData = num => setNoOfData(num);
+  const changePageData = num => {
+    setNoOfData(num);
+    return setPageNo(1);
+  };
 
   const changePage = num => setPageNo(num);
   if (!auth) {
