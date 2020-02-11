@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 function Table({ data, totalData, changePage, changePageData }) {
   let paginate = [];
-  for (let i = 1; i < Math.ceil(totalData.length / data.length); i++) {
+  for (let i = 1; i < Math.floor(totalData.length / data.length); i++) {
     paginate.push(i);
   }
   return (
