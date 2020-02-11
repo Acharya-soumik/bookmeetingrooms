@@ -6,7 +6,7 @@ import { searchMeetingRooms } from "../Redux/meetingAction";
 
 function Home({ auth, rooms, searchRoom, searchResult }) {
   const [pageNo, setPageNo] = useState(1);
-  const [noOfData, setNoOfData] = useState(10);
+  const [noOfData, setNoOfData] = useState(6);
   const [search, setSearch] = useState("");
   const indexPrevData = Math.floor((pageNo - 1) * noOfData);
   const indexCurrData = pageNo * noOfData;

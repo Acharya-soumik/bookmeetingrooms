@@ -14,10 +14,13 @@ function Table({ data, totalData, changePage, changePageData }) {
           className="form-control"
           onChange={e => changePageData(e.target.value)}
         >
-          <option>10</option>
-          <option>20</option>
+          <option disabled selected>
+            Change Items to show per page
+          </option>
+          <option>6</option>
+          <option>12</option>
+          <option>25</option>
           <option>50</option>
-          <option>100</option>
         </select>
       </div>
       {/* https://source.unsplash.com/random/?office,room */}
@@ -57,17 +60,20 @@ function Table({ data, totalData, changePage, changePageData }) {
           );
         })}
       </div>
-      {paginate.map(ele => {
-        return (
-          <button
-            className="btn btn-danger m-3"
-            onClick={() => changePage(ele)}
-            key={ele}
-          >
-            Page {ele}
-          </button>
-        );
-      })}
+      <hr />
+      <div className="row container">
+        {paginate.map(ele => {
+          return (
+            <button
+              className="badge badge-pill badge-danger m-1"
+              onClick={() => changePage(ele)}
+              key={ele}
+            >
+              Page {ele}
+            </button>
+          );
+        })}
+      </div>
     </div>
   );
 }

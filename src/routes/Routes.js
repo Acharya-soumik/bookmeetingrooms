@@ -52,8 +52,9 @@ function Routes({ token }) {
             Login
           </Link>
         </li>
-        {token}
       </ul>
+      <hr />
+      {token.length ? <span>Your Token Id is : {token}</span> : <span></span>}
       <Switch>
         <Route exact path="/" component={() => <Home />} />
         <Route exact path="/login" component={() => <Login />} />
