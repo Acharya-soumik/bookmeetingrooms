@@ -1,9 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
 
 function Table({ data, totalData, changePage, changePageData }) {
   let paginate = [];
-  for (let i = 1; i < Math.ceil(totalData.length / data.length); i++) {
+  for (let i = 1; i <= Math.ceil(totalData.length / data.length); i++) {
     paginate.push(i);
   }
   return (
@@ -19,56 +20,49 @@ function Table({ data, totalData, changePage, changePageData }) {
           <option>100</option>
         </select>
       </div>
-      <table class="table table-dark">
-        <thead>
-          <tr>
-            <th scope="col">#</th>
-            <th scope="col">Floor</th>
-            <th scope="col">Room Name</th>
-            <th scope="col">Capacity</th>
-            <th scope="col">Rate perday</th>
-            <th scope="col">Status</th>
-            <th scope="col">Book Now</th>
-          </tr>
-        </thead>
-        <tbody>
-          {data.map(ele => {
-            return (
-              <tr key={ele.id}>
-                <th scope="row">{ele.id}</th>
-                <td>{ele.floor} </td>
-                <td>{ele.name}</td>
-                <td>{ele.capacity}</td>
-                <td>{ele.price}</td>
-                {ele.available ? (
-                  <td className="text-success">Available</td>
-                ) : (
-                  <td className="text-danger">Not Avaialble</td>
-                )}
-                {ele.available ? (
-                  <Link to={`/booking/${ele.name}`}>
-                    <button className="text-success btn btn-outline-light">
+      {/* https://source.unsplash.com/random/?office,room */}
+      <div className="row col-md-12">
+        {data.map(ele => {
+          return (
+            <div className="col-md-4 my-2 my_card" key={ele.id}>
+              <div class="card">
+                <img
+                  src="https://source.unsplash.com/random/?office,room"
+                  class="card-img"
+                  alt="..."
+                />
+                <div class="card-body">
+                  <p class="card-title">{ele.name}</p>
+                  <small class="card-text">Rs, {ele.price}</small>
+                  <hr />
+                  {ele.available ? (
+                    <Link to={`/booking/${ele.name}`}>
+                      <button className="text-success btn btn-outline-light">
+                        Book Now
+                      </button>
+                    </Link>
+                  ) : (
+                    <button
+                      className="text-muted btn btn-outline-dark"
+                      onClick={() =>
+                        alert("Sorry Meeting Room not available !")
+                      }
+                    >
                       Book Now
                     </button>
-                  </Link>
-                ) : (
-                  <button
-                    className="text-muted btn btn-outline-dark"
-                    onClick={() => alert("not available")}
-                  >
-                    Book Now
-                  </button>
-                )}
-              </tr>
-            );
-          })}
-        </tbody>
-      </table>
+                  )}
+                </div>
+              </div>
+            </div>
+          );
+        })}
+      </div>
       {paginate.map(ele => {
         return (
           <button
             className="btn btn-danger m-3"
             onClick={() => changePage(ele)}
+            key={ele}
           >
             Page {ele}
           </button>
@@ -78,4 +72,7 @@ function Table({ data, totalData, changePage, changePageData }) {
   );
 }
 
-export default Table;
+const mapStateToProps = state => ({});
+const mapDispatchToProps = dispatch => ({});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Table);

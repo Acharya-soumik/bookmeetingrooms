@@ -41,7 +41,6 @@ const registerSuccess = data => {
 };
 
 export const login_auth = item => {
-  console.log(item);
   return dispatch => {
     dispatch(loginReguest);
     axios

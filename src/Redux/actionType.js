@@ -6,3 +6,4 @@ export const REGISTER_SUCCESS = "REGISTER_SUCCESS";
 export const REGISTER_FAILURE = "REGISTER_FAILURE";
 export const ADD_NEW_ROOM = "ADD_NEW_ROOM";
 export const SET_ROOMS = "SET_ROOMS";
+export const SEARCH_ROOMS = "SEARCH_ROOMS";
