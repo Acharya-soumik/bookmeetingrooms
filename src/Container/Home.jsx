@@ -22,7 +22,10 @@ function Home({ auth, rooms, searchRoom, searchResult }) {
     searchRoom(e.target.value);
   };
 
-  const changePage = num => setPageNo(num);
+  const changePage = num => {
+    console.log(dataToShow);
+    return setPageNo(num);
+  };
   if (!auth) {
     return <Redirect to="/login" />;
   }

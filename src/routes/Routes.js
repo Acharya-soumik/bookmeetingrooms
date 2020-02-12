@@ -74,22 +74,24 @@ function Routes({ token, auth, log_out }) {
       </ul>
       <hr />
       {token.length ? <span>Your Token Id is : {token}</span> : <span></span>}
-      <Switch>
-        <Route exact path="/" component={() => <Home />} />
-        <Route exact path="/login" component={() => <Login />} />
-        <Route exact path="/booking" component={() => <Booking />} />
-        <Route
-          exact
-          path="/add"
-          component={props => <AddMeeting {...props} />}
-        />
-        <Route
-          exact
-          path="/booking/:name"
-          component={props => <BookingPage {...props} />}
-        />
-        <Route render={pageNotFound} />
-      </Switch>
+      <div className="">
+        <Switch>
+          <Route exact path="/" component={() => <Home />} />
+          <Route exact path="/login" component={() => <Login />} />
+          <Route exact path="/booking" component={() => <Booking />} />
+          <Route
+            exact
+            path="/add"
+            component={props => <AddMeeting {...props} />}
+          />
+          <Route
+            exact
+            path="/booking/:name"
+            component={props => <BookingPage {...props} />}
+          />
+          <Route render={pageNotFound} />
+        </Switch>
+      </div>
     </div>
   );
 }

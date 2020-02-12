@@ -5,8 +5,11 @@ import { filterBookings } from "../Redux/meetingAction";
 
 function Table({ data, totalData, changePage, changePageData, filter }) {
   let paginate = [];
-  for (let i = 1; i <= Math.ceil(totalData.length / data.length); i++) {
-    paginate.push(i);
+  console.log(paginate);
+  if (data.length > paginate.length) {
+    for (let i = 1; i <= Math.floor(totalData.length / data.length); i++) {
+      paginate.push(i);
+    }
   }
   const changeHandler = e => {
     filter(e.target.value);
@@ -28,7 +31,9 @@ function Table({ data, totalData, changePage, changePageData, filter }) {
         <div>
           <select
             className="form-control"
-            onChange={e => changePageData(e.target.value)}
+            onChange={e => {
+              changePageData(e.target.value);
+            }}
           >
             <option disabled selected>
               Change Items to show per page
@@ -83,7 +88,9 @@ function Table({ data, totalData, changePage, changePageData, filter }) {
           return (
             <button
               className="badge m-auto badge-dark m-1"
-              onClick={() => changePage(ele)}
+              onClick={() => {
+                return changePage(ele);
+              }}
               key={ele}
             >
               Page {ele}

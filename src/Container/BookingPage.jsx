@@ -4,6 +4,13 @@ import swal from "sweetalert";
 import { showBookings } from "../Redux/meetingAction";
 
 function BookingPage(props) {
+  let dt = new Date();
+  let dateNow = dt.getUTCDate();
+  let year = dt.getUTCFullYear();
+  let month = dt.getUTCMonth();
+  month = month + 1;
+  console.log("prev date", year + "-" + month + "-" + dateNow);
+
   const [loading, setLoading] = useState(false);
   let name = props.match.params.name;
   let room = props.allData.find(ele => {
@@ -46,7 +53,12 @@ function BookingPage(props) {
         <div className="col-md-4 m-auto">
           <h5>Book Meeting Room</h5>
           <span className="form-control m-2">
-            Start Date : <input type="date" />
+            Start Date :
+            <input
+              type="date"
+              onChange={e => console.log(e.target.value)}
+              min={year + "-" + month + "-" + dateNow}
+            />
           </span>
           <span className="form-control m-2">
             End Date : <input type="date" />
