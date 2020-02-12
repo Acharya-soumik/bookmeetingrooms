@@ -3,7 +3,8 @@ import {
   LOGIN_SUCCESS,
   LOGIN_FAILURE,
   REGISTER_REQUEST,
-  REGISTER_SUCCESS
+  REGISTER_SUCCESS,
+  LOGOUT
 } from "./actionType";
 import axios from "axios";
 import swal from "sweetalert";
@@ -25,6 +26,12 @@ const loginFailure = message => {
   return {
     type: LOGIN_FAILURE,
     payload: message
+  };
+};
+export const logout = () => {
+  swal("Logged Out !", "You have Logged out", "success");
+  return {
+    type: LOGOUT
   };
 };
 

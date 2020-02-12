@@ -14,9 +14,14 @@ function AddMeeting({ addRoom, meetingRooms }) {
       floor: floor,
       name: name,
       price: price,
-      capacity: capacity
+      capacity: capacity,
+      available: true
     };
     addRoom(obj);
+    setname("");
+    setCapacity("");
+    setFloor("");
+    setPrice("");
   };
   return (
     <div>
@@ -25,10 +30,12 @@ function AddMeeting({ addRoom, meetingRooms }) {
         <input
           className="form-control m-3"
           placeholder="Enter Meeting Room Name"
+          value={name}
           onChange={e => setname(e.target.value)}
         />
         <input
           className="form-control m-3"
+          value={floor}
           placeholder="Enter Floor"
           onChange={e => setFloor(e.target.value)}
         />
@@ -36,12 +43,14 @@ function AddMeeting({ addRoom, meetingRooms }) {
           className="form-control m-3"
           type="number"
           placeholder="Enter Room Capacity"
+          value={capacity}
           onChange={e => setCapacity(e.target.value)}
         />
         <input
           className="form-control m-3"
           type="number"
           placeholder="Price Per Day"
+          value={price}
           onChange={e => setPrice(e.target.value)}
         />
         <button className="btn btn-outline-dark" onClick={clickhandler}>

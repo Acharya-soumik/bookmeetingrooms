@@ -5,6 +5,8 @@ import Home from "../Container/Home";
 import AddMeeting from "../Container/AddMeeting";
 import BookingPage from "../Container/BookingPage";
 import { connect } from "react-redux";
+import { logout } from "../Redux/authAction";
+import Booking from "../Container/Booking";
 
 const pageNotFound = () => {
   return (
@@ -37,20 +39,37 @@ const pageNotFound = () => {
     </div>
   );
 };
-function Routes({ token }) {
+function Routes({ token, auth, log_out }) {
   return (
-    <div className="bg-info p-3">
+    <div className=" p-3">
       <h2 className=" display-5">The Meeting Room</h2>
       <ul className="nav justify-content-center">
+        <li className="mr-auto image">
+          <img
+            className="nav-img"
+            src="https://static.thenounproject.com/png/1617283-200.png"
+          />
+        </li>
+        <li className="nav-item">
+          <Link to="/booking" className="nav-link text-dark">
+            Bookings
+          </Link>
+        </li>
         <li className="nav-item">
           <Link to="/" className="text-dark nav-link active">
             Home
           </Link>
         </li>
         <li className="nav-item">
-          <Link to="/login" className="text-dark nav-link">
-            Login
-          </Link>
+          {auth ? (
+            <button className="btn btn-dark" onClick={() => log_out()}>
+              Log Out
+            </button>
+          ) : (
+            <Link to="/login" className="text-dark nav-link">
+              Login
+            </Link>
+          )}
         </li>
       </ul>
       <hr />
@@ -58,6 +77,7 @@ function Routes({ token }) {
       <Switch>
         <Route exact path="/" component={() => <Home />} />
         <Route exact path="/login" component={() => <Login />} />
+        <Route exact path="/booking" component={() => <Booking />} />
         <Route
           exact
           path="/add"
@@ -74,8 +94,11 @@ function Routes({ token }) {
   );
 }
 const mapStateToProps = state => ({
-  token: state.auth.token
+  token: state.auth.token,
+  auth: state.auth.isAuth
 });
-const mapDispatchToProps = state => ({});
+const mapDispatchToProps = dispatch => ({
+  log_out: () => dispatch(logout())
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(Routes);

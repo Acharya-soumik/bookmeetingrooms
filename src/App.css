@@ -3,6 +3,13 @@
   margin: 0;
   box-sizing: border-box;
   text-align: center;
+  font-family: "Lacquer", sans-serif;
+}
+.body {
+  background-color: rgb(82, 128, 128);
+}
+.nav-img {
+  height: 5rem;
 }
 .card-img {
   height: 12rem;
@@ -22,8 +29,6 @@
 }
 
 body {
-  background: #1b0034;
-  background-image: linear-gradient(135deg, #1b0034 10%, #33265c 100%);
   background-attachment: fixed;
   background-size: cover;
 }

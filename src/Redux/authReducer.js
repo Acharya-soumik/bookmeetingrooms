@@ -2,11 +2,12 @@ import {
   LOGIN_REQUEST,
   LOGIN_SUCCESS,
   LOGIN_FAILURE,
-  REGISTER_SUCCESS
+  REGISTER_SUCCESS,
+  LOGOUT
 } from "./actionType";
 
 const initialState = {
-  isAuth: false,
+  isAuth: true,
   token: [],
   message: "",
   err: "",
@@ -33,6 +34,11 @@ const authReducer = (state = initialState, action) => {
         ...state,
         isLoading: false,
         err: action.payload
+      };
+    case LOGOUT:
+      return {
+        ...state,
+        isAuth: false
       };
 
     case REGISTER_SUCCESS:

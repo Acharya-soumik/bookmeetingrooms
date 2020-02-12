@@ -36,25 +36,8 @@ function Home({ auth, rooms, searchRoom, searchResult }) {
             value={search}
             onChange={changeHandler}
           />
-          {searchResult.length ? (
-            searchResult.map(ele => {
-              return (
-                <ul className="nav border border-dark rounded">
-                  <li className="nav-item m-1">Name: {ele.name}</li>
-                  <li className="nav-item m-1">Capacity: {ele.capacity}</li>
-                  <li className="nav-item m-1">Price {ele.price}</li>
-                  <li className="nav-item m-1">
-                    Available:
-                    {ele.available ? <span>Yes</span> : <span>No</span>}
-                  </li>
-                </ul>
-              );
-            })
-          ) : (
-            <span></span>
-          )}
         </div>
-        <Link to="/add" className="text-light">
+        <Link to="/add" className="text-dark">
           Add New Meeting Room
         </Link>
         <div className="col-md-10 m-auto p-4">

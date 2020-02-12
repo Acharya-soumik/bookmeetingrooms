@@ -1,30 +1,47 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
+import { filterBookings } from "../Redux/meetingAction";
 
-function Table({ data, totalData, changePage, changePageData }) {
+function Table({ data, totalData, changePage, changePageData, filter }) {
   let paginate = [];
   for (let i = 1; i <= Math.ceil(totalData.length / data.length); i++) {
     paginate.push(i);
   }
+  const changeHandler = e => {
+    filter(e.target.value);
+  };
   return (
     <div>
-      <div className="col-md-4 ml-auto">
-        <select
-          className="form-control"
-          onChange={e => changePageData(e.target.value)}
-        >
-          <option disabled selected>
-            Change Items to show per page
-          </option>
-          <option>6</option>
-          <option>12</option>
-          <option>25</option>
-          <option>50</option>
-        </select>
+      <div className="col-md-8 m-2 row  m-auto">
+        <div className="mx-4 row">
+          <select className="form-control" onChange={changeHandler}>
+            <option disabled selected>
+              Filter Data
+            </option>
+            <option>Show All</option>
+            <option>Show Available</option>
+            <option>Price Lower to Higher</option>
+            <option>Price Higher to Lower</option>
+          </select>
+        </div>
+        <div>
+          <select
+            className="form-control"
+            onChange={e => changePageData(e.target.value)}
+          >
+            <option disabled selected>
+              Change Items to show per page
+            </option>
+            <option>6</option>
+            <option>12</option>
+            <option>25</option>
+            <option>50</option>
+          </select>
+        </div>
       </div>
       {/* https://source.unsplash.com/random/?office,room */}
-      <div className="row col-md-12">
+      <div className="row col-md-12 mt-4">
         {data.map(ele => {
           return (
             <div className="col-md-4 my-2 my_card" key={ele.id}>
@@ -61,11 +78,11 @@ function Table({ data, totalData, changePage, changePageData }) {
         })}
       </div>
       <hr />
-      <div className="row container">
+      <div className="row container m-auto">
         {paginate.map(ele => {
           return (
             <button
-              className="badge badge-pill badge-danger m-1"
+              className="badge m-auto badge-dark m-1"
               onClick={() => changePage(ele)}
               key={ele}
             >
@@ -79,6 +96,8 @@ function Table({ data, totalData, changePage, changePageData }) {
 }
 
 const mapStateToProps = state => ({});
-const mapDispatchToProps = dispatch => ({});
+const mapDispatchToProps = dispatch => ({
+  filter: item => dispatch(filterBookings(item))
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(Table);

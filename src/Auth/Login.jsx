@@ -41,7 +41,7 @@ function Login(props) {
       <div className="row">
         <div className="col-md-6">
           <h2>Login </h2>
-          <div className="col-md-6 m-auto border border-light rounded p-4 ">
+          <div className="col-md-6 m-auto border border-dark rounded p-4 ">
             <input
               className="form-control my-3"
               placeholder="Enter your Name"
@@ -62,7 +62,7 @@ function Login(props) {
         </div>
         <div className="col-md-6">
           <h2>Register</h2>
-          <div className="col-md-6 m-auto border border-light rounded p-4 ">
+          <div className="col-md-6 m-auto border border-dark rounded p-4 ">
             <input
               className="form-control my-3"
               value={rName}
