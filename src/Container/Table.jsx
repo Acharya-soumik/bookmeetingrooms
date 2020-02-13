@@ -16,8 +16,8 @@ function Table({ data, totalData, changePage, changePageData, filter }) {
   };
   return (
     <div>
-      <div className="col-md-8 m-2 row  m-auto">
-        <div className="mx-4 row">
+      <div className=" row m-auto ">
+        <div className="col-md-5">
           <select className="form-control" onChange={changeHandler}>
             <option disabled selected>
               Filter Data
@@ -27,9 +27,8 @@ function Table({ data, totalData, changePage, changePageData, filter }) {
             <option>Price Lower to Higher</option>
             <option>Price Higher to Lower</option>
           </select>
-          Name: Reallinks Floor: 5 Capacity: 50 Price: 9387
         </div>
-        <div>
+        <div className="col-md-5 offset-1">
           <select
             className="form-control"
             onChange={e => {
@@ -74,7 +73,7 @@ function Table({ data, totalData, changePage, changePageData, filter }) {
                         alert("Sorry Meeting Room not available !")
                       }
                     >
-                      Book Now
+                      Not Available
                     </button>
                   )}
                 </div>

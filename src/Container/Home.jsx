@@ -40,7 +40,7 @@ function Home({ auth, rooms, searchRoom, searchResult }) {
             onChange={changeHandler}
           />
         </div>
-        <Link to="/add" className="text-dark">
+        <Link to="/add" className="text-dark btn  btn-success">
           Add New Meeting Room
         </Link>
         <div className="col-md-10 m-auto p-4">
