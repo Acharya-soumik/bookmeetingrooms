@@ -2,8 +2,11 @@ import React, { useState } from "react";
 import { connect } from "react-redux";
 import swal from "sweetalert";
 import { showBookings } from "../Redux/meetingAction";
+import ISLoader from "../Container/ISLoader";
 
 function BookingPage(props) {
+  const [prevDate, setPrevDate] = useState(0);
+  const [tillDate, setTillDate] = useState(0);
   let dt = new Date();
   let dateNow = dt.getUTCDate();
   let year = dt.getUTCFullYear();
@@ -21,22 +24,20 @@ function BookingPage(props) {
     setLoading(true);
     const timer = setTimeout(() => {
       setLoading(false);
-      props.book(room);
+      props.book({ ...room, from: prevDate, to: tillDate });
       swal("Booking Confirmed!", "Your booking has been made!", "success");
       props.history.push("/");
     }, 3000);
     return () => clearTimeout(timer);
   };
 
+  // console.log(prevData);
+  // console.log(tillDate);
+
   let date = Date.now();
-  console.log(date);
+  // console.log(date);
   if (loading) {
-    return (
-      <div>
-        <div className="spinner-border text-dark  " role="status"></div>
-        <p>Booking Your Room...</p>
-      </div>
-    );
+    return <ISLoader />;
   } else {
     return (
       <div>
@@ -54,14 +55,15 @@ function BookingPage(props) {
           <h5>Book Meeting Room</h5>
           <span className="form-control m-2">
             Start Date :
-            <input
-              type="date"
-              onChange={e => console.log(e.target.value)}
-              min={year + "-" + month + "-" + dateNow}
-            />
+            <input type="date" onChange={e => console.log(e.target.value)} />
           </span>
           <span className="form-control m-2">
-            End Date : <input type="date" />
+            End Date :{" "}
+            <input
+              type="date"
+              min={year + "-" + "-" + month + "-" + dateNow}
+              onChange={e => setTillDate(e.target.value)}
+            />
           </span>
           <button className="btn btn-success my-4" onClick={clickHandler}>
             Book Now

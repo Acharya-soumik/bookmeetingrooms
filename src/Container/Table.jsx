@@ -27,6 +27,7 @@ function Table({ data, totalData, changePage, changePageData, filter }) {
             <option>Price Lower to Higher</option>
             <option>Price Higher to Lower</option>
           </select>
+          Name: Reallinks Floor: 5 Capacity: 50 Price: 9387
         </div>
         <div>
           <select
@@ -50,15 +51,15 @@ function Table({ data, totalData, changePage, changePageData, filter }) {
         {data.map(ele => {
           return (
             <div className="col-md-4 my-2 my_card" key={ele.id}>
-              <div class="card">
+              <div className="card">
                 <img
                   src="https://source.unsplash.com/random/?office,room"
-                  class="card-img"
+                  className="card-img"
                   alt="..."
                 />
-                <div class="card-body">
-                  <p class="card-title">{ele.name}</p>
-                  <small class="card-text">Rs, {ele.price}</small>
+                <div className="card-body">
+                  <p className="card-title">{ele.name}</p>
+                  <small className="card-text">Rs, {ele.price}</small>
                   <hr />
                   {ele.available ? (
                     <Link to={`/booking/${ele.name}`}>
