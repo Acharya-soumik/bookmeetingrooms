@@ -7,7 +7,7 @@ import {
 } from "./actionType";
 
 const initialState = {
-  isAuth: false,
+  isAuth: true,
   token: [],
   message: "",
   err: "",
